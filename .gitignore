@@ -16,3 +16,4 @@ demo/
 Builds/
 Models/
 
+*.tmp
