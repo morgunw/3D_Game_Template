@@ -3,16 +3,16 @@ extends KinematicBody
 # controller variables, add export to the front to expose to editor
 # like: export speed = 7
 var speed = 7
-var default_speed
-var mouse_sensitivity = 0.1
+var default_speed = speed
+var mouse_sensitivity = 0.2
 var gravity = 9.8
 var jump = 5
 var cam_accel = 40
 
 # sprinting stuff, can export as well
-export var sprint_speed = 14
+var sprint_speed = 14
 export var can_sprint = false # use sprinting at all
-export var toggle_sprint = false # toggle sprint on off instead of holding
+var toggle_sprint = false # toggle sprint on off instead of holding
 var is_sprinting = false
 
 # smooths out jumping acceleration
@@ -41,7 +41,6 @@ func _ready():
 # processes input from mouse and keyboard
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-#		get_tree().quit() # Quits the game
 		suspend_movement = !suspend_movement
 		
 	# to expose mouse on key press, need to add to input map
@@ -104,8 +103,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		snap = Vector3.ZERO
 		gravity_vec = Vector3.UP * jump
-		$JumpSound.play()
-		
+		# $JumpSound.play()		
 	
 	velocity = velocity.linear_interpolate(direction * speed, accel * delta)
 	movement = velocity + gravity_vec

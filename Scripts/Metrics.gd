@@ -1,7 +1,7 @@
 extends Control
 
-var apple_count = 0
+var duck_count = 0
 
-func _on_Apple_collected():
-	apple_count = apple_count + 1
-	$Label.text = String(apple_count)
+func _on_duckhead_collected():
+	duck_count = duck_count + 1
+	$Label.text = String(duck_count)
